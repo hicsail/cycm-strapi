@@ -1,0 +1,39 @@
+version: '3'
+services:
+  strapi:
+    container_name: strapi
+    image: hicsail/restore-strapi:main
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: sqlite
+      DATABASE_HOST: 0.0.0.0
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      # DATABASE_SSL does not behave the way you expect it to. Ask this committer.
+      # In any case: set to false since we are using the docker network.
+      DATABASE_SSL: "false"
+      # Set these in Portainer, or in a .env for local development; see .env.example.
+      # NB: If they are set in Portainer they don't actually have to be listed here, but let's list them bc documentation.
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - strapi-models:/opt/app/src
+      - strapi-uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    
+volumes:
+  strapi-models:
+  strapi-uploads:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
