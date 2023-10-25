@@ -25,7 +25,7 @@ services:
       - strapi-models:/opt/app/src
       - strapi-uploads:/opt/app/public/uploads
     ports:
-      - "1337:1337"
+      - "1338:1337"
     networks:
       - strapi
     
