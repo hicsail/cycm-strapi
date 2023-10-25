@@ -1,7 +1,7 @@
 version: '3'
 services:
   strapi:
-    container_name: strapi
+    container_name: cycm-strapi
     image: hicsail/cycm-strapi:main
     restart: unless-stopped
     environment:
