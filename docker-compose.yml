@@ -2,7 +2,7 @@ version: '3'
 services:
   strapi:
     container_name: strapi
-    image: strapi-local #hicsail/restore-strapi:main
+    image: hicsail/cycm-strapi:main
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: sqlite
