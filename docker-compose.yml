@@ -25,10 +25,10 @@ services:
       - strapi-models:/opt/app/src
       - strapi-uploads:/opt/app/public/uploads
     ports:
-      - "1338:1337"
+      - "${CYCM_STRAPI_PORT}:1337"
     networks:
       - strapi
-    
+
 volumes:
   strapi-models:
   strapi-uploads:
