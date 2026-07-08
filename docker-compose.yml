@@ -24,6 +24,7 @@ services:
     volumes:
       - strapi-models:/opt/app/src
       - strapi-uploads:/opt/app/public/uploads
+      - strapi-db:/opt/app/.tmp
     ports:
       - "${CYCM_STRAPI_PORT}:1337"
     networks:
@@ -32,6 +33,7 @@ services:
 volumes:
   strapi-models:
   strapi-uploads:
+  strapi-db:
 
 networks:
   strapi:
